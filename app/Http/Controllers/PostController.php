@@ -17,7 +17,7 @@ class PostController extends Controller
 
         // $post = Post::create([
         $validated = $request->validate([
-                'title' => 'required|max:15',
+                'title' => 'required|max:20',
                 'body' => 'required|max:400',
 
         ]);
