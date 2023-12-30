@@ -9,10 +9,16 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function create(){
-    //post/create.blade.phpを表示
-    return view('post.create');
-    }
+        //post/create.blade.phpを表示
+        return view('post.create');
+        }
 
+    public function index(){
+        //postモデルを介して、データベースpostsテーブルの内容を取得できる。
+        $posts=Post::all();
+        return view('post.index',compact('posts'));
+        }
+            
     public function store(Request $request){
 
         // $post = Post::create([
