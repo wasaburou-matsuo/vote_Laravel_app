@@ -22,6 +22,9 @@ Route::get('/post/create', [PostController::class, 'create']);
 //投稿データ保存用のルート設定
 Route::post('post', [PostController::class, 'store'])
 ->name('post.store');
+//一覧表示用のルート設定
+Route::get('post', [PostController::class, 'index']);
+
 
 Route::get('/', function () {
     return view('welcome');
