@@ -12,5 +12,11 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
+        'user_id'
     ];
+
+    // CHAPTER7で追加
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

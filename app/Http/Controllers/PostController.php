@@ -15,7 +15,17 @@ class PostController extends Controller
 
     public function index(){
         //postモデルを介して、データベースpostsテーブルの内容を取得できる。
-        $posts=Post::all();
+        // $posts=Post::all();
+        //  dd($posts);
+
+        // postsテーブルのログインユーザーのデータを取得
+        // $posts=Post::where('user_id', auth()->id())->get();
+        
+        // postsテーブルのログインユーザー以外のデータを取得
+        $posts=Post::where('user_id', '!=', auth()->id())->get();
+
+        // compact関数　変数名とその値から配列を作成します。
+        // post/index.blade.phpを表示 
         return view('post.index',compact('posts'));
         }
             
@@ -27,6 +37,11 @@ class PostController extends Controller
                 'body' => 'required|max:400',
 
         ]);
+
+        // バリデーション情報に、user_idを追加することが出来る。
+        $validated['user_id'] = auth()->id();
+
+        // dd($validated);
 
         $post = Post::create($validated);
         $request->session()->flash('message','保存しました');

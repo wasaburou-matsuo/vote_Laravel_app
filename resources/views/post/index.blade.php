@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
     <div class="mx-auto px-6">
+    {{-- foeachにより、コントローラー（PostController.phpのindexメソッド）から受け取った＄Post変数の値を１つずつ取り出し、 --}}
+    {{-- 各＄Postの件名title,本文body、作成日created_atを表示。 --}}
     @foreach($posts as $post)
         <div class="mt-4 p-8 bg-white w-full rounded-2xl">
             <h1 class="p-4 text-lg font-semibold">
