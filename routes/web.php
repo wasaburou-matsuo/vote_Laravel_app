@@ -17,18 +17,28 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/test', [TestController::class, 'test'])->name('test');
-//入力フォーム用のルート
-Route::get('/post/create', [PostController::class, 'create']);
-//投稿データ保存用のルート設定
-Route::post('post', [PostController::class, 'store'])
-->name('post.store');
-//一覧表示用のルート設定
-Route::get('post', [PostController::class, 'index']);
+
+
+// //一覧表示用のルート設定
+// Route::get('post', [PostController::class, 'index']);
+
+// //入力フォーム用のルート
+// Route::get('/post/create', [PostController::class, 'create'])
+// ->middleware(['auth','admin']);
 
 
 Route::get('/', function () {
     return view('welcome');
+})
+
+Route::middleware(['auth','admin'])->group(function(){
+    Route::get('post', [PostController::class, 'index']);
+    Route::get('/post/create', [PostController::class, 'create']);
 });
+
+//投稿データ保存用のルート設定
+Route::post('post', [PostController::class, 'store'])
+->name('post.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

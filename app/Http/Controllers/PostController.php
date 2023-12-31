@@ -19,10 +19,10 @@ class PostController extends Controller
         //  dd($posts);
 
         // postsテーブルのログインユーザーのデータを取得
-        // $posts=Post::where('user_id', auth()->id())->get();
+         $posts=Post::where('user_id', auth()->id())->get();
         
         // postsテーブルのログインユーザー以外のデータを取得
-        $posts=Post::where('user_id', '!=', auth()->id())->get();
+        //$posts=Post::where('user_id', '!=', auth()->id())->get();
 
         // compact関数　変数名とその値から配列を作成します。
         // post/index.blade.phpを表示 

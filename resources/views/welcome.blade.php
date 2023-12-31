@@ -22,6 +22,10 @@
             @endfor
         @endauth --}}
 
+        @can('test')
+            テストゲート
+        @endcan
+
         @auth
             <p>
                 {{ Auth::user()->name }}さん、こんにちは
